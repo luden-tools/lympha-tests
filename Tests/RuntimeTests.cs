@@ -53,5 +53,14 @@ namespace CompilerTests
 
             Assert.AreEqual(6, resultAsNumber);
         }
+
+        [TestMethod]
+        public void PrintTheSum()
+        {
+            var result = compiler.Compile("print (sum 1 2 3)");
+            result.Get(out string resultAsText);
+
+            Assert.AreEqual("6", resultAsText);
+        }
     }
 }
