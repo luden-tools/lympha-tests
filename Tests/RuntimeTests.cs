@@ -15,7 +15,7 @@ namespace CompilerTests
             var result = compiler.Compile("print hello-world");
             result.Get(out string resultAsText);
 
-            Assert.AreEqual(resultAsText, "hello-world");
+            Assert.AreEqual("hello-world", resultAsText);
         }
 
         [TestMethod]
@@ -61,6 +61,15 @@ namespace CompilerTests
             result.Get(out string resultAsText);
 
             Assert.AreEqual("6", resultAsText);
+        }
+
+        [TestMethod]
+        public void NamedArguments()
+        {
+            var result = compiler.Compile("print hello prefix: -- append: ##");
+            result.Get(out string resultAsText);
+
+            Assert.AreEqual("--hello##", resultAsText);
         }
     }
 }

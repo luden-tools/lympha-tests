@@ -6,11 +6,11 @@ namespace CompilerTests
     [TestClass]
     public class ASTNodeTests
     {
+        Compiler compiler = new();
+
         [TestMethod]
         public void ExplicitCommand()
         {
-            Compiler compiler = new();
-
             var ast = compiler
                 .Tokenize("pedro :says hello")
                 .Parse();
@@ -24,8 +24,6 @@ namespace CompilerTests
         [TestMethod]
         public void ExplicitResultAsCommand()
         {
-            Compiler compiler = new();
-
             var token = compiler.Tokenize("pedro :(choose default-voice portugal) hello");
             var ast = token.Parse();
 
